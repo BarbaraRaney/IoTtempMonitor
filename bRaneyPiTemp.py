@@ -17,8 +17,9 @@ base_dir = '/sys/bus/w1/devices/'
 device1_file = glob.glob(base_dir + '28*')[0] + '/w1_slave'
 device2_file = glob.glob(base_dir + '28*')[1] + '/w1_slave'
 
+servns ='raneybieventhubnamespace'
 key_name = "RootManageSharedAccessKey"
-key_value = "MFIHIYoS7QmgaATst7IXAn272URV71y8+XT66GJZBiY=" 
+key_value = "mQC9Uln3KUQimxkCgSuX9yTekuTzxW29STziLrQvZI0=" 
 
 sbs = ServiceBusService("BraneyBI",shared_access_key_name=key_name, shared_access_key_value=key_value) 
 sbs.create_queue("piQueue")
