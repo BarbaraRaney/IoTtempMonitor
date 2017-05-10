@@ -23,7 +23,7 @@ key_value = "mQC9Uln3KUQimxkCgSuX9yTekuTzxW29STziLrQvZI0="
 
 sbs = ServiceBusService(service_namespace = servns,shared_access_key_name=key_name, shared_access_key_value=key_value) 
 #sbs = ServiceBusService(service_namespace = servns,shared_access_key_name=key_name, shared_access_key_value=key_value) 
-sbs.create_queue("piQueue")
+#sbs.create_queue("newqueue")
 
 def read_temp_raw(dfile):
     f = open(dfile, 'r')
@@ -60,8 +60,8 @@ try:
     json_data = json.dumps(data, sort_keys=True)
     print(json_data) 
     msg = Message(json_data)
-    sbs.send_queue_message('piQueue', msg)
-#sbs.send_event(msg, json)
+#    sbs.send_queue_message('newqueue', msg)
+    sbs.send_event('raneybieventhub', msg)
     time.sleep(5)
 
 except Exception as e:
