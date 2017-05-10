@@ -7,7 +7,7 @@ import thread
 import socket 
 import json
 from datetime import datetime 
-from azure.mgmt.iothub import IotHubClient
+#from azure.mgmt.iothub import IotHubClient
 from azure.servicebus import ServiceBusService, Message, Queue 
 
 os.system('modprobe w1-gpio') 
@@ -43,23 +43,23 @@ def read_temp(dfile):
 
 host = socket.gethostname() 
 
-while True:
-    try:
-        data = {}
-        temp1 = read_temp(device1_file)
-        temp2 = read_temp(device2_file)
-        now = datetime.now()
-        data['DeviceId'] = host
-        data['rowId'] = now.strftime('%Y%m%d%H%M%S')
-        data['timestamp'] = now.strftime('%Y/%m/%d %H:%M:%S')
-        data['Temp1'] = str(temp1)
-        data['Temp2'] = str(temp2)
-        json_data = json.dumps(data, sort_keys=True)
-        print(json_data) 
-        msg = Message(json_data)
-        sbs.send_queue_message('piQueue', msg)
-        time.sleep(5)
+#while True:
+try:
+    data = {}
+    temp1 = read_temp(device1_file)
+    temp2 = read_temp(device2_file)
+    now = datetime.now()
+    data['DeviceId'] = host
+    data['rowId'] = now.strftime('%Y%m%d%H%M%S')
+    data['timestamp'] = now.strftime('%Y/%m/%d %H:%M:%S')
+    data['Temp1'] = str(temp1)
+    data['Temp2'] = str(temp2)
+    json_data = json.dumps(data, sort_keys=True)
+    print(json_data) 
+    msg = Message(json_data)
+    sbs.send_queue_message('piQueue', msg)
+    time.sleep(5)
 
-    except Exception as e:
-        print "Exception - ", repr(e)
+except Exception as e:
+    print "Exception - ", repr(e)
 

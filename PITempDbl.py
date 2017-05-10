@@ -98,7 +98,7 @@ while True:
 
         body += ', \"Temp2\":' + str(temp2) + '}'
 
-	
+	print body 	
 
         
 
