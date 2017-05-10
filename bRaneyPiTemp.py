@@ -1,4 +1,4 @@
-#!/usr/bin/python
+    #!/usr/bin/python
 
 import os
 import glob 
@@ -62,7 +62,7 @@ try:
     msg = Message(json_data)
     sbs.send_queue_message('piQueue', msg)
 #sbs.send_event(msg, json)
-time.sleep(5)
+    time.sleep(5)
 
 except Exception as e:
     print "Exception - ", repr(e)
