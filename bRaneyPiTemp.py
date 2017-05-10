@@ -44,6 +44,7 @@ def read_temp(dfile):
 
 host = socket.gethostname() 
 
+
 #while True:
 try:
     data = {}
