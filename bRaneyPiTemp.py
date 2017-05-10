@@ -21,7 +21,7 @@ servns ='raneybieventhubnamespace'
 key_name = "RootManageSharedAccessKey"
 key_value = "mQC9Uln3KUQimxkCgSuX9yTekuTzxW29STziLrQvZI0=" 
 
-sbs = ServiceBusService("BraneyBI",shared_access_key_name=key_name, shared_access_key_value=key_value) 
+sbs = ServiceBusService(service_namespace = servns,shared_access_key_name=key_name, shared_access_key_value=key_value) 
 #sbs = ServiceBusService(service_namespace = servns,shared_access_key_name=key_name, shared_access_key_value=key_value) 
 sbs.create_queue("piQueue")
 
