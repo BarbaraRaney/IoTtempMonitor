@@ -16,6 +16,7 @@ os.system('modprobe w1-therm')
 base_dir = '/sys/bus/w1/devices/' 
 device1_file = glob.glob(base_dir + '28*')[0] + '/w1_slave'
 device2_file = glob.glob(base_dir + '28*')[1] + '/w1_slave'
+device3_file = glob.glob(base_dir + '28*')[2] + '/w1_slave'
 
 servns ='raneybieventhubnamespace'
 key_name = "RootManageSharedAccessKey"
@@ -51,12 +52,14 @@ try:
     data = {}
     temp1 = read_temp(device1_file)
     temp2 = read_temp(device2_file)
+    temp3 = read_temp(device3_file)
     now = datetime.now()
     data['DeviceId'] = host
     data['rowId'] = now.strftime('%Y%m%d%H%M%S')
     data['timestamp'] = now.strftime('%Y/%m/%d %H:%M:%S')
     data['Temp1'] = str(temp1)
     data['Temp2'] = str(temp2)
+    data['Temp3'] = str(temp3)
     json_data = json.dumps(data, sort_keys=True,ensure_ascii=True)
     print(json_data) 
 #    msg = Message(json_data)
