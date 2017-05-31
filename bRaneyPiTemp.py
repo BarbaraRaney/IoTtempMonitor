@@ -57,11 +57,11 @@ try:
     data['timestamp'] = now.strftime('%Y/%m/%d %H:%M:%S')
     data['Temp1'] = str(temp1)
     data['Temp2'] = str(temp2)
-    json_data = json.dumps(data, sort_keys=True)
+    json_data = json.dumps(data, sort_keys=True,ensure_ascii=True)
     print(json_data) 
-    msg = Message(json_data)
+#    msg = Message(json_data)
 #    sbs.send_queue_message('newqueue', msg)
-    sbs.send_event('raneybieventhub', msg)
+    sbs.send_event('raneybieventhub', json_data)
     time.sleep(5)
 
 except Exception as e:
